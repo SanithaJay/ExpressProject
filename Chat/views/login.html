@@ -11,9 +11,21 @@
 </head>
 
 <body>
-   <form action='/' method='post'>
-      <label>Username:</label>
-      <input type="text" name="username" required />
+
+   <script>
+      function storeInLocalStorage ()
+      {
+         const username = document.getElementById( 'username' ).value;
+
+         localStorage.setItem( 'username', username );
+        
+
+      }
+   </script>
+
+   <form action='/' method='get' onsubmit="storeInLocalStorage()">
+      <label for="username">Username:</label>
+      <input type="text" name="username" id="username" required />
       <button type="submit">Login</button>
    </form>
 </body>

@@ -2,20 +2,31 @@
 <html>
 
 <head>
-   <meta charset='utf-8'>
-   <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-   <title>Chat</title>
-   <meta name='viewport' content='width=device-width, initial-scale=1'>
-   <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Chat</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 
 </head>
 
 <body>
-   <form action="/" method='post'>
-      <label>Message:</label>
-      <input type="textarea" name="username" required />
-      <button type="submit">Send</button>
-   </form>
+
+    <form action="/" method='post'>
+        <input type="hidden" id="username" name="username" />
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" cols="50" required></textarea>
+        <button type="submit" >Send</button>
+    </form>
+
+    <div id="chat-messages"></div>
+        <!-- Chat messages will be loaded here -->
+    </div>
+    <script>
+        document.getElementById( 'username' ).value = localStorage.getItem( 'username' );
+
+        
+    </script>
 </body>
 
 </html>
