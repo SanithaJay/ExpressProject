@@ -16,16 +16,33 @@
         <input type="hidden" id="username" name="username" />
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="4" cols="50" required></textarea>
-        <button type="submit" >Send</button>
+        <button type="submit" id="showChat">Send</button>
     </form>
 
-    <div id="chat-messages"></div>
-        <!-- Chat messages will be loaded here -->
-    </div>
+    <div id="fileContent"></div>
+
+
     <script>
         document.getElementById( 'username' ).value = localStorage.getItem( 'username' );
 
-        
+      
+
+
+       /*  document.getElementById( 'showChat' ).addEventListener( 'click', function ()
+        {
+            fetch( '../chat.txt' ) 
+                .then( response => response.text() )
+                .then( text =>
+                {
+                    document.getElementById( 'fileContent' ).textContent = text;
+                } )
+                .catch( error =>
+                {
+                    console.error( 'Error fetching file:', error );
+                } );
+        } );
+ */
+
     </script>
 </body>
 
