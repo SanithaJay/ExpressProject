@@ -6,42 +6,53 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Chat</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-
 </head>
 
 <body>
 
-    <form action="/" method='post'>
+    <form action="/" method='post' id='showChat'>
         <input type="hidden" id="username" name="username" />
         <label for="message">Message:</label>
         <textarea id="message" name="message" rows="4" cols="50" required></textarea>
-        <button type="submit" id="showChat">Send</button>
+        <button type="submit">Send</button>
     </form>
 
     <div id="fileContent"></div>
 
 
     <script>
+
         document.getElementById( 'username' ).value = localStorage.getItem( 'username' );
 
-      
 
-
-       /*  document.getElementById( 'showChat' ).addEventListener( 'click', function ()
+        function fetchChatContent ()
         {
-            fetch( '../chat.txt' ) 
+            fetch( 'chat.txt' )
                 .then( response => response.text() )
                 .then( text =>
                 {
-                    document.getElementById( 'fileContent' ).textContent = text;
+                    const lines = text.split( '\n' );
+                    const fileContentDiv = document.getElementById( 'fileContent' );
+                    fileContentDiv.innerHTML = '';
+                    lines.forEach( line =>
+                    {
+                        if ( line.trim() !== "" )
+                        { // Skip empty lines
+                            const p = document.createElement( 'p' );
+                            p.textContent = line;
+                            fileContentDiv.appendChild( p );
+                        }
+                    } );
                 } )
                 .catch( error =>
                 {
                     console.error( 'Error fetching file:', error );
                 } );
-        } );
- */
+        }
+
+        setInterval( fetchChatContent, 1000 );
+
+        fetchChatContent();
 
     </script>
 </body>

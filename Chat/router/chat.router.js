@@ -19,6 +19,7 @@ router.post( "/", ( req, res, next ) =>
     console.log( "uname:", req.body.username );
     console.log( "message:", req.body.message );
     const fileData = req.body.username + ':' + req.body.message + '\n';
+    res.sendFile( path.join( __dirname, "..", "views", "chat.html" ) )
     fs.appendFile( "chat.txt", fileData, ( err ) =>
     {
         if ( err )
@@ -31,7 +32,7 @@ router.post( "/", ( req, res, next ) =>
             {
                 if ( err ) throw err;
                 console.log( data.toString() );
-                res.sendFile( path.join( __dirname, "..", "views", "chat.html" ) )
+                
             } );
         }
     } )
